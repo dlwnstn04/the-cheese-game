@@ -19,6 +19,15 @@ public class EnergyBoard : MonoBehaviour
     {
         if(slider.value>0)              //게임 종료 후에도 에너지를 넣어주면 재작동 초당
         {
+            if(Player.energy == 1)
+            {
+                slider.value += 10;
+                Player.energy = 0;
+            }
+            if(Player.hurt)
+            {
+                slider.value -= Time.deltaTime * 10;
+            }
             slider.value -= Time.deltaTime;     //초당 1만큼 에너지 감소
             reset = true;
         }
